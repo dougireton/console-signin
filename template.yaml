@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  console-login
+
+  Sample SAM Template for console-login
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  ConsoleLoginFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src
+      Handler: console_login/console_login.lambda_handler
+      Runtime: python3.8
+      Events:
+        HelloWorld:
+          Type: EventBridgeRule # More info about CloudWatchEvent Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#cloudwatchevent
+          Properties:
+            #EventBusName: your-event-bus-name #Uncomment this if your events are not on the 'default' event bus
+            Pattern:
+              source:
+                - aws.signin
+              detail-type:
+                - AWS API Call via CloudTrail
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  ConsoleLoginFunction:
+    Description: "Console Login Lambda Function ARN"
+    Value: !GetAtt ConsoleLoginFunction.Arn
+  ConsoleLoginFunctionIamRole:
+    Description: "Implicit IAM Role created for Console Login function"
+    Value: !GetAtt ConsoleLoginFunctionRole.Arn
