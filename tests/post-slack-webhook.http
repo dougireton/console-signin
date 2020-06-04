@@ -1,0 +1,23 @@
+POST https://hooks.slack.com/workflows/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 HTTP/1.1
+content-type: application/json
+
+{
+    "username": "doug@1strategy.com"
+}
+
+### 302 Found: api.slack.com
+
+POST https://hooks.slack.com/workflows/foo/bar HTTP/1.1
+content-type: application/json
+
+{
+    "username": "doug@1strategy.com"
+}
+
+### 403 Forbidden: Invalid token
+POST https://hooks.slack.com/workflows/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 HTTP/1.1
+content-type: application/json
+
+{
+    "username": "doug@1strategy.com"
+}

@@ -11,12 +11,17 @@ Globals:
     Timeout: 3
 
 Resources:
-  ConsoleLoginFunction:
+  ConsoleSigninFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: src
-      Handler: console_login/console_login.lambda_handler
+      Handler: console_signin/console_signin.lambda_handler
       Runtime: python3.8
+      Environment:
+        Variables:
+          slackWebhookURL: "{{resolve:ssm:/1s/ireton/console-signin/slack-webhook-url:1}}"
+          LOG_LEVEL: DEBUG
+          POWERTOOLS_LOGGER_LOG_EVENT: True
       Events:
         HelloWorld:
           Type: EventBridgeRule # More info about CloudWatchEvent Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#cloudwatchevent
@@ -27,14 +32,17 @@ Resources:
                 - aws.signin
               detail-type:
                 - AWS API Call via CloudTrail
+              detail:
+                eventName:
+                  - SwitchRole
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  ConsoleLoginFunction:
+  ConsoleSigninFunction:
     Description: "Console Login Lambda Function ARN"
-    Value: !GetAtt ConsoleLoginFunction.Arn
-  ConsoleLoginFunctionIamRole:
+    Value: !GetAtt ConsoleSigninFunction.Arn
+  ConsoleSigninFunctionIamRole:
     Description: "Implicit IAM Role created for Console Login function"
-    Value: !GetAtt ConsoleLoginFunctionRole.Arn
+    Value: !GetAtt ConsoleSigninFunctionRole.Arn

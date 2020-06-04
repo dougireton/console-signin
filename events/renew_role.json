@@ -1,0 +1,35 @@
+{
+    "version": "0",
+    "id": "2c5c65b9-d909-4961-7763-527a3abf77e5",
+    "detail-type": "AWS Console Sign In via CloudTrail",
+    "source": "aws.signin",
+    "account": "842337631775",
+    "time": "2020-06-02T09:15:08Z",
+    "region": "us-east-1",
+    "resources": [],
+    "detail": {
+      "eventVersion": "1.05",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAJ4LHD2ZAYD3ARYX4K:pavel@1strategy.com",
+        "arn": "arn:aws:sts::842337631775:assumed-role/1S-Admins/pavel@1strategy.com",
+        "accountId": "842337631775"
+      },
+      "eventTime": "2020-06-02T09:15:08Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "RenewRole",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "73.254.25.54",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36",
+      "requestParameters": null,
+      "responseElements": {
+        "RenewRole": "Success"
+      },
+      "additionalEventData": {
+        "RenewedBy": "arn:aws:iam::494090490970:user/pavel@1strategy.com",
+        "RedirectTo": "https://console.aws.amazon.com/cloudformation/home?region=us-east-1&state=hashArgs%23%2Fstacks%2Fstackinfo%3FstackId%3Darn%253Aaws%253Acloudformation%253Aus-east-1%253A842337631775%253Astack%252Fvfx2%252F6170f6b0-a455-11ea-a8a3-12498e67507f%26filteringText%3D%26filteringStatus%3Dactive%26viewNested%3Dtrue%26hideStacks%3Dfalse&isauthcode=true"
+      },
+      "eventID": "bfac9192-5cd5-495d-81c6-a6d3f6b1f3c2",
+      "eventType": "AwsConsoleSignIn"
+    }
+  }
