@@ -5,11 +5,6 @@ import requests
 
 from aws_lambda_powertools.logging import Logger
 
-<<<<<<< HEAD
-=======
-# "https://hooks.slack.com/workflows/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"
-
->>>>>>> b35a7b8... Unit tests work, create SlackMessage class
 logger = Logger(service="Console Sign-in")
 
 class SlackMessage:
@@ -22,6 +17,7 @@ class SlackMessage:
 
         Parameters:
 <<<<<<< HEAD
+<<<<<<< HEAD
             self.user_arn (string): AWS User ARN, e.g. arn:aws:iam::123456789012:user/doug@example.com
 
         Returns:
@@ -32,6 +28,12 @@ class SlackMessage:
         Returns:
             username (string): Username in email format, e.g. doug@1strategy.com
 >>>>>>> b35a7b8... Unit tests work, create SlackMessage class
+=======
+            self.user_arn (string): AWS User ARN, e.g. arn:aws:iam::123456789012:user/doug@example.com
+
+        Returns:
+            username (string): Username in email format, e.g. doug@example.com
+>>>>>>> b00e390... Fix examples
         """
         arn = re.search(r'arn:aws:iam::\d{12}:user/([a-z]+@\w+\.com)', self.user_arn)
         return arn.group(1)
