@@ -18,10 +18,10 @@ class SlackMessage:
         Extracts the username from an AWS User ARN
 
         Parameters:
-            self.user_arn (string): AWS User ARN, e.g. arn:aws:iam::123456789012:user/doug@1strategy.com
+            self.user_arn (string): AWS User ARN, e.g. arn:aws:iam::123456789012:user/doug@example.com
 
         Returns:
-            username (string): Username in email format, e.g. doug@1strategy.com
+            username (string): Username in email format, e.g. doug@example.com
         """
         arn = re.search(r'arn:aws:iam::\d{12}:user/([a-z]+@\w+\.com)', self.user_arn)
         return arn.group(1)

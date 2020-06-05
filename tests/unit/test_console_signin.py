@@ -49,7 +49,7 @@ def event(event_file=EVENT_FILE):
         return json.load(f)
 
 def test_slack_message_happy_path():
-    msg = SlackMessage("arn:aws:iam::123456789012:user/doug@1strategy.com")
+    msg = SlackMessage("arn:aws:iam::123456789012:user/doug@example.com")
 
     with requests_mock.Mocker() as m:
         m.post("https://hooks.slack.com/workflows/valid/path")
@@ -58,7 +58,7 @@ def test_slack_message_happy_path():
     assert resp.status_code == 200
 
 def test_slack_message_invalid_url():
-    msg = SlackMessage("arn:aws:iam::123456789012:user/doug@1strategy.com")
+    msg = SlackMessage("arn:aws:iam::123456789012:user/doug@example.com")
     resp_body = {
         "error": "invalid_token",
         "ok": False,
