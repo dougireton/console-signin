@@ -5,8 +5,6 @@ import requests
 
 from aws_lambda_powertools.logging import Logger
 
-# "https://hooks.slack.com/workflows/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"
-
 logger = Logger(service="Console Sign-in")
 
 class SlackMessage:
