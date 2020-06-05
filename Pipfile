@@ -6,10 +6,14 @@ verify_ssl = true
 [dev-packages]
 pytest = "*"
 pytest-mock = "*"
+pylint = "*"
+requests-mock = "*"
 
 [packages]
 six = "*"
 pprint = "*"
+requests = "*"
+aws-lambda-powertools = "*"
 
 [requires]
 python_version = "3.8"
