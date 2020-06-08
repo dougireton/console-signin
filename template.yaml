@@ -23,7 +23,7 @@ Resources:
           LOG_LEVEL: DEBUG
           POWERTOOLS_LOGGER_LOG_EVENT: True
       Events:
-        HelloWorld:
+        ConsoleSignIn:
           Type: EventBridgeRule # More info about CloudWatchEvent Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#cloudwatchevent
           Properties:
             #EventBusName: your-event-bus-name #Uncomment this if your events are not on the 'default' event bus
@@ -31,7 +31,7 @@ Resources:
               source:
                 - aws.signin
               detail-type:
-                - AWS API Call via CloudTrail
+                - AWS Console Sign In via CloudTrail
               detail:
                 eventName:
                   - SwitchRole
