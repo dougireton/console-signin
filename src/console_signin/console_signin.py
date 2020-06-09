@@ -16,24 +16,10 @@ class SlackMessage:
         Extracts the username from an AWS User ARN
 
         Parameters:
-<<<<<<< HEAD
-<<<<<<< HEAD
             self.user_arn (string): AWS User ARN, e.g. arn:aws:iam::123456789012:user/doug@example.com
 
         Returns:
             username (string): Username in email format, e.g. doug@example.com
-=======
-            self.user_arn (string): AWS User ARN, e.g. arn:aws:iam::123456789012:user/doug@1strategy.com
-
-        Returns:
-            username (string): Username in email format, e.g. doug@1strategy.com
->>>>>>> b35a7b8... Unit tests work, create SlackMessage class
-=======
-            self.user_arn (string): AWS User ARN, e.g. arn:aws:iam::123456789012:user/doug@example.com
-
-        Returns:
-            username (string): Username in email format, e.g. doug@example.com
->>>>>>> b00e390... Fix examples
         """
         arn = re.search(r'arn:aws:iam::\d{12}:user/([a-z]+@\w+\.com)', self.user_arn)
         return arn.group(1)
@@ -67,7 +53,7 @@ def lambda_handler(event, context):
 
     Returns
     ------
-        The same input event file
+        Response status code from Slack API call
     """
     master_acct_arn = event["detail"]["additionalEventData"]["SwitchFrom"]
     sm = SlackMessage(master_acct_arn)
