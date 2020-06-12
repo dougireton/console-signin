@@ -1,14 +1,11 @@
 import json
 import os
 import uuid
-import requests
-import requests_mock
-
 
 import pytest
+import requests_mock
 
 from console_signin.console_signin import SlackMessage
-
 
 class LambdaContext:
     """Context class that mimics the AWS Lambda context
